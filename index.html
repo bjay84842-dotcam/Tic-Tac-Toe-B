@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tic Tac Toe</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Space+Grotesk:wght@500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="banner" id="banner" role="status"></div>
+<div id="dim" aria-hidden="true"></div>
+<div id="beam" aria-hidden="true"></div>
+<div id="lamp">
+<svg id="lampsvg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Desk lamp. Pull the cord or press L to toggle the light">
+  <defs><radialGradient id="lg"><stop offset="0" stop-color="var(--lamp-light)" stop-opacity=".9"/><stop offset="1" stop-color="var(--lamp-light)" stop-opacity="0"/></radialGradient></defs>
+  <ellipse cx="100" cy="283" rx="54" ry="10" class="lbody"/>
+  <ellipse cx="100" cy="278" rx="30" ry="6" class="ltrim" style="stroke-width:2.5"/>
+  <line x1="100" y1="274" x2="68" y2="188" class="lstroke" stroke-width="8"/>
+  <line x1="68" y1="188" x2="92" y2="100" class="lstroke" stroke-width="8"/>
+  <circle cx="100" cy="272" r="7" class="lbody"/><circle cx="100" cy="272" r="7" class="ltrim" style="stroke-width:2.5"/>
+  <circle cx="68" cy="188" r="9" class="lbody"/><circle cx="68" cy="188" r="9" class="ltrim" style="stroke-width:3"/>
+  <g id="shade" class="hit">
+    <circle class="lglow" cx="95" cy="100" r="52" fill="url(#lg)"/>
+    <path d="M38 92C38 36 152 36 152 92Z" class="lbody"/>
+    <path d="M44 80C60 50 130 50 146 80" class="ltrim" style="stroke-width:2.5;opacity:.8"/>
+    <ellipse cx="95" cy="92" rx="57" ry="9" class="lopen"/>
+    <ellipse cx="95" cy="92" rx="57" ry="9" class="ltrim" style="stroke-width:2"/>
+    <circle class="lglow" cx="95" cy="97" r="8"/>
+  </g>
+  <g id="cord" class="hit" role="button" tabindex="0" aria-label="Pull cord: toggle lamp">
+    <rect x="114" y="92" width="28" height="82" fill="transparent"/>
+    <line class="cordline" x1="128" y1="92" x2="128" y2="150"/>
+    <circle class="bead" cx="128" cy="153" r="6"/>
+  </g>
+</svg>
+</div>
+<main class="app">
+  <header>
+    <h1>Tic Tac Toe</h1>
+    <div class="themes" role="group" aria-label="Theme">
+      <button data-t="neon" aria-pressed="true">Neon</button>
+      <button data-t="paper" aria-pressed="false">Paper</button>
+      <button data-t="lagoon" aria-pressed="false">Lagoon</button>
+    </div>
+    <button class="btn" id="lampBtn" aria-pressed="true">💡 Lamp on</button>
+    <button class="btn" id="mute" aria-label="Toggle sound">🔊 Sound on</button>
+  </header>
+  <section class="controls" aria-label="Game mode">
+    <div class="seg" id="modes" role="group" aria-label="Opponent">
+      <button data-m="pvp" aria-pressed="true">2 Players</button>
+      <button data-m="ai" aria-pressed="false">vs Computer</button>
+    </div>
+    <div class="seg" id="levels" role="group" aria-label="Difficulty" hidden>
+      <button data-l="Easy" aria-pressed="false">Easy</button>
+      <button data-l="Medium" aria-pressed="true">Medium</button>
+      <button data-l="Hard" aria-pressed="false">Hard</button>
+    </div>
+  </section>
+  <section class="status" aria-label="Scoreboard">
+    <div class="score x" id="sx"><b id="nx">0</b><span id="lx">Player X</span></div>
+    <div class="score" id="sd"><b id="nd">0</b><span>Draws</span></div>
+    <div class="score o" id="so"><b id="no">0</b><span id="lo">Player O</span></div>
+  </section>
+  <section class="board-wrap">
+    <div class="msg" id="msg" aria-live="polite"></div>
+    <div class="board" id="board"></div>
+    <div class="history" id="history" hidden>
+      <h2>History <button id="clear">Clear</button></h2>
+      <ul id="list"></ul>
+    </div>
+    <div class="actions">
+      <button class="btn" id="histBtn" aria-expanded="false" aria-controls="history">📜</button>
+      <button class="btn primary" id="again">New game</button>
+    </div>
+  </section>
+</main>
+<script src="script.js" defer></script>
+</body>
+</html>
